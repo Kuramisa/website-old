@@ -1,20 +1,20 @@
-import styled from "styled-components";
+import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
 
-import { Spinner } from "@blueprintjs/core";
-
-const StyledSpinner = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-`;
+import Logo from "../assets/images/kuramisa.png";
 
 const Loading = () => {
     return (
-        <StyledSpinner>
-            <Spinner intent="warning" />
-        </StyledSpinner>
+        <Box sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "90vh"
+        }}>
+            <img alt="" src={Logo} style={{ width: "64px", height: "auto", position: "absolute" }} />
+            <CircularProgress size={90} color="warning" />
+        </Box>
+
     );
 };
 
