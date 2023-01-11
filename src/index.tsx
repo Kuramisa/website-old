@@ -1,5 +1,3 @@
-import "./assets/index.css";
-
 import { createRoot } from "react-dom/client";
 import ApolloProvider from "./providers/ApolloProvider";
 
