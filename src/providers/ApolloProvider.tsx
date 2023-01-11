@@ -11,6 +11,9 @@ import { RetryLink } from "@apollo/client/link/retry";
 import { BrowserRouter as Router } from "react-router-dom";
 import { AuthProvider } from "./AuthProvider";
 
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+
 const { REACT_APP_SERVER_URL } = process.env;
 
 const httpLink = createHttpLink({
@@ -59,13 +62,36 @@ const client = new ApolloClient({
     credentials: "include"
 });
 
+const darkTheme = createTheme({
+    palette: {
+        mode: "dark"
+    },
+    typography: {
+        fontFamily: [
+            "-apple-system",
+            "BlinkMacSystemFont",
+            "\"Segoe UI\"",
+            "Roboto",
+            "\"Helvetica Neue\"",
+            "Arial",
+            "sans-serif",
+            "\"Apple Color Emoji\"",
+            "\"Segoe UI Emoji\"",
+            "\"Segoe UI Symbol\""
+        ].join(",")
+    }
+});
+
 export default (
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
             <ApolloProvider client={client}>
                 <Router>
                     <AuthProvider>
-                        <App />
+                        <ThemeProvider theme={darkTheme}>
+                            <CssBaseline enableColorScheme={true} />
+                            <App />
+                        </ThemeProvider>
                     </AuthProvider>
                 </Router>
             </ApolloProvider>
