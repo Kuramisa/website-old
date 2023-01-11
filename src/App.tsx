@@ -1,7 +1,17 @@
+import { useContext } from "react";
+import { Routes, Route } from "react-router-dom";
 import { useQuery } from "@apollo/client";
+
+import { AuthContext } from "./providers/AuthProvider";
+
 import { FetchClientUser } from "./gql/queries/client";
 
 import Loading from "./components/Loading";
+import BotOffline from "./components/BotOffline";
+
+import Navigation from "./components/Navigation";
+import Login from "./components/Login";
+import Logout from "./components/Logout";
 
 const App = () => {
     if (process.env.NODE_ENV !== "development") {
@@ -16,12 +26,21 @@ const App = () => {
         );
     }
 
+    const { auth } = useContext(AuthContext);
+
     const { loading, error, data: { clientUser: bot } = {} } = useQuery(FetchClientUser, { pollInterval: 100000 });
 
     if (loading) return <Loading />;
+    if (error) return <BotOffline />;
 
     return (
-        <></>
+        <>
+            <Navigation bot={bot} auth={auth} />
+            <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/logout" element={<Logout />} />
+            </Routes>
+        </>
     );
 };
 
