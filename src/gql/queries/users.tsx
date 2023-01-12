@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 export const FetchUsers = gql`
-    query ($fetchDb: Boolean) {
-        users(fetchDb: $fetchDb)
+    query ($fetchDb: Boolean, $first: Int, $offset: Int) {
+        users(fetchDb: $fetchDb, first: $first, offset: $offset)
     }
 `;
 
@@ -25,13 +25,13 @@ export const FetchUserCard = gql`
 `;
 
 export const FetchWarns = gql`
-    query ($guildId: String!, $userId: String!) {
-        warns(guildId: $guildId, userId: $userId)
+    query ($guildId: String!, $userId: String!, $first: Int, $offset: Int) {
+        warns(guildId: $guildId, userId: $userId, first: $first, offset: $offset)
     }
 `;
 
 export const FetchReports = gql`
-    query ($guildId: String!, $userId: String!) {
-        reports(guildId: $guildId, userId: $userId)
+    query ($guildId: String!, $userId: String!, $first: Int, $offset: Int) {
+        reports(guildId: $guildId, userId: $userId, first: $first, offset: $offset)
     }
 `;
