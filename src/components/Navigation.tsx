@@ -12,7 +12,7 @@ const Navigation = ({ bot, auth }: { bot: any; auth: any; }) => {
     const navigate = useNavigate();
 
     const authUrl = process.env.NODE_ENV === "production"
-        ? "https://discord.com/api/oauth2/authorize?client_id=969414951292788766&redirect_uri=https%3A%2F%2Fkuramisa.com%2Flogin&response_type=code&scope=identify%20guilds"
+        ? "https://discord.com/api/oauth2/authorize?client_id=969414951292788766&redirect_uri=https%3A%2F%2Fdev.kuramisa.com%2Flogin&response_type=code&scope=identify%20guilds"
         : "https://discord.com/api/oauth2/authorize?client_id=969414951292788766&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Flogin&response_type=code&scope=identify%20guilds";
 
     const inviteUrl = "https://discord.com/oauth2/authorize?client_id=969414951292788766&permissions=1634569944311&scope=bot";
