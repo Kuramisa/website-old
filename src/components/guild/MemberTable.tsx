@@ -4,10 +4,6 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
 import { FetchMembers } from "../../gql/queries/guilds";
 
-const columns: GridColDef[] = [
-    { field: "memberUsername", headerName: "Username", width: 150, sortable: false }
-];
-
 const MemberTable = ({ guild }: { guild: any }) => {
     const { loading, data: { members } = {} } = useQuery(FetchMembers, {
         variables: {
@@ -17,6 +13,10 @@ const MemberTable = ({ guild }: { guild: any }) => {
     });
 
     if (loading) return <></>;
+
+    const columns: GridColDef[] = [
+        { field: "memberUsername", headerName: "Username", width: 150, sortable: false }
+    ];
 
     const rows = members.map((member: any, i: number) => ({
         id: i,
