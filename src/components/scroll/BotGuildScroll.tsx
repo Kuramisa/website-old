@@ -1,4 +1,4 @@
-import { MutableRefObject } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useQuery } from "@apollo/client";
@@ -8,7 +8,7 @@ import InfiniteScroll from "react-infinite-scroller";
 
 import { FetchGuilds } from "../../gql/queries/guilds";
 
-const BotGuildScroll = ({ parent }: { parent: MutableRefObject<any> }) => {
+const BotGuildScroll = ({ parent }: { parent: React.MutableRefObject<any> }) => {
 
     const navigate = useNavigate();
 
