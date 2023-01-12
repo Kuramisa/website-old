@@ -1,0 +1,62 @@
+
+.sidebar-scroll-container::-webkit-scrollbar {
+    width: 0 !important;
+}
+
+
+.sidebar-container {
+    background-color: rgba(255, 255, 255, 0.09);
+    width: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-right: #3c1f41 1px solid;
+
+    button {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .sidebar-scroll-container {
+        height: 847px;
+        width: 240px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            width: 240px;
+            padding: 10px 10px;
+
+            .guild {
+                display: flex;
+                align-items: center;
+                border-bottom: rgba(orange, 0.2) 1px solid;
+
+                .guild-info {
+                    display: block;
+                    margin-left: 10px;
+                    cursor: pointer;
+
+                    .guild-name {
+                        font-weight: 700;
+                        color: #fff;
+                    }
+
+                    .guild-members {
+                        font-size: 14px;
+                        color: #999;
+                    }
+                }
+            }
+        }
+
+        .sidebar:last-child :last-child {
+            border-bottom: none !important;
+        }
+    }
+}

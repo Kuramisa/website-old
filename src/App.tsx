@@ -10,6 +10,8 @@ import BotLoading from "./components/bot/Loading";
 import BotOffline from "./components/bot/Offline";
 
 import Navigation from "./components/Navigation";
+import Sidebar from "./components/Sidebar";
+
 import Login from "./components/Login";
 import Logout from "./components/Logout";
 
@@ -36,6 +38,7 @@ const App = () => {
     return (
         <>
             <Navigation bot={bot} auth={auth} />
+            <Sidebar auth={auth} />
             <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route path="/logout" element={<Logout />} />
