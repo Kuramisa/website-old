@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import Avatar from "@mui/material/Avatar";
 import Backdrop from "@mui/material/Backdrop";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
@@ -13,7 +14,7 @@ const ProfileButton = ({ auth }: { auth: any }) => {
 
     const [open, setOpen] = useState(false);
 
-    const icon = <img alt="" width={48} style={{ borderRadius: "50%" }} src={auth.avatarURL} />;
+    const icon = <Avatar src={auth.avatarURL} sx={{ width: 56, height: "auto" }} />;
 
     const actions = [
         {
