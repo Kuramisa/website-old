@@ -6,8 +6,8 @@ import { AuthContext } from "./providers/AuthProvider";
 
 import { FetchClientUser } from "./gql/queries/client";
 
-import Loading from "./components/Loading";
-import BotOffline from "./components/BotOffline";
+import BotLoading from "./components/bot/Loading";
+import BotOffline from "./components/bot/Offline";
 
 import Navigation from "./components/Navigation";
 import Login from "./components/Login";
@@ -30,7 +30,7 @@ const App = () => {
 
     const { loading, error, data: { clientUser: bot } = {} } = useQuery(FetchClientUser, { pollInterval: 100000 });
 
-    if (loading) return <Loading />;
+    if (loading) return <BotLoading />;
     if (error) return <BotOffline />;
 
     return (

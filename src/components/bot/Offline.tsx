@@ -1,9 +1,9 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-import Logo from "../assets/images/kuramisa.png";
+import Logo from "../../assets/images/kuramisa.png";
 
-const BotOffline = () => {
+const Offline = () => {
     return (
         <Box
             sx={{
@@ -20,4 +20,4 @@ const BotOffline = () => {
     );
 };
 
-export default BotOffline;
+export default Offline;

@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 
-import Logo from "../assets/images/kuramisa.png";
+import Logo from "../../assets/images/kuramisa.png";
 
 const Loading = () => {
     return (
