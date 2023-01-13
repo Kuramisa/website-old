@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
 
+// eslint-disable-next-line
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
 import { FetchMembers } from "../../gql/queries/guilds";
