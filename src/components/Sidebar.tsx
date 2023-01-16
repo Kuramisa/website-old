@@ -18,7 +18,7 @@ const Sidebar = ({ auth }: { auth: any }) => {
                     Servers</Button>) : (
                 <Button variant="outlined" color="success" onClick={() => setUserServers(true)}>Bot&apos;s
                     Servers</Button>))}
-            <div className="sidebar-scroll-container" ref={scrollParent}>
+            <div className={auth ? "sidebar-scroll-container-auth" : "sidebar-scroll-container"} ref={scrollParent}>
                 {userServers && auth ? (
                     <UserGuildScroll parent={scrollParent} />
                 ) : (

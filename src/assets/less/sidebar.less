@@ -3,6 +3,10 @@
     width: 0 !important;
 }
 
+.sidebar-scroll-container-auth::-webkit-scrollbar {
+    width: 0 !important;
+}
+
 
 .sidebar-container {
     background-color: rgba(255, 255, 255, 0.09);
@@ -12,50 +16,61 @@
     align-items: center;
     flex-direction: column;
     border-right: #3c1f41 1px solid;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 
     button {
         margin-top: 5px;
         margin-bottom: 5px;
     }
 
-    .sidebar-scroll-container {
+    .sidebar-scroll-container-auth {
         height: 847px;
         width: 240px;
         overflow-y: auto;
         overflow-x: hidden;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
+        -ms-overflow-style: none !important;
+        scrollbar-width: none !important;
+    }
 
-        .sidebar {
+    .sidebar-scroll-container {
+        height: 902px;
+        width: 240px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -ms-overflow-style: none !important;
+        scrollbar-width: none !important;
+    }
+
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        width: 240px;
+        padding: 10px 10px;
+
+        .guild {
             display: flex;
-            flex-direction: column;
-            width: 240px;
-            padding: 10px 10px;
+            align-items: center;
+            border-bottom: rgba(orange, 0.2) 1px solid;
 
-            .guild {
-                display: flex;
-                align-items: center;
-                border-bottom: rgba(orange, 0.2) 1px solid;
+            .guild-info {
+                margin-left: 10px;
 
-                .guild-info {
-                    margin-left: 10px;
+                .guild-name {
+                    font-weight: 700;
+                    color: #fff;
+                    cursor: pointer;
+                }
 
-                    .guild-name {
-                        font-weight: 700;
-                        color: #fff;
-                        cursor: pointer;
-                    }
-
-                    .guild-members {
-                        font-size: 14px;
-                        color: #999;
-                    }
+                .guild-members {
+                    font-size: 14px;
+                    color: #999;
                 }
             }
         }
+    }
 
-        .sidebar:last-child :last-child {
-            border-bottom: none !important;
-        }
+    .sidebar:last-child :last-child {
+        border-bottom: none !important;
     }
 }

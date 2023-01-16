@@ -20,7 +20,7 @@ const BotGuildScroll = ({ parent }: { parent: React.MutableRefObject<any> }) => 
                 offset: guilds.length
             },
             updateQuery: (prev, { fetchMoreResult }) => {
-                if (!fetchMoreResult || fetchMoreResult.length < 1) return prev;
+                if (!fetchMoreResult) return prev;
                 return Object.assign({}, prev, {
                     guilds: [...prev.guilds, ...fetchMoreResult.guilds]
                 });
