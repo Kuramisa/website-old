@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 export const FetchUsers = gql`
-    query ($fetchDb: Boolean, $first: Int, $offset: Int) {
-        users(fetchDb: $fetchDb, first: $first, offset: $offset)
+    query ($fetchDb: Boolean, $page: Int, $perPage: Int) {
+        users(fetchDb: $fetchDb, page: $page, perPage: $perPage)
     }
 `;
 
@@ -13,8 +13,8 @@ export const FetchUser = gql`
 `;
 
 export const FetchUserGuilds = gql`
-    query ($auth: String!, $fetchDb: Boolean) {
-        userGuilds(auth: $auth, fetchDb: $fetchDb)
+    query ($auth: String!, $fetchDb: Boolean, $page: Int, $perPage: Int) {
+        userGuilds(auth: $auth, fetchDb: $fetchDb, page: $page, perPage: $perPage)
     }
 `;
 
@@ -25,13 +25,13 @@ export const FetchUserCard = gql`
 `;
 
 export const FetchWarns = gql`
-    query ($guildId: String!, $userId: String!, $first: Int, $offset: Int) {
-        warns(guildId: $guildId, userId: $userId, first: $first, offset: $offset)
+    query ($guildId: String!, $userId: String!, $page: Int, $perPage: Int) {
+        warns(guildId: $guildId, userId: $userId, page: $page, perPage: $perPage)
     }
 `;
 
 export const FetchReports = gql`
-    query ($guildId: String!, $userId: String!, $first: Int, $offset: Int) {
-        reports(guildId: $guildId, userId: $userId, first: $first, offset: $offset)
+    query ($guildId: String!, $userId: String!, $page: Int, $perPage: Int) {
+        reports(guildId: $guildId, userId: $userId, page: $page, perPage: $perPage)
     }
 `;

@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 export const FetchGuilds = gql`
-    query ($fetchDb: Boolean, $first: Int, $offset: Int) {
-        guilds(fetchDb: $fetchDb, first: $first, offset: $offset)
+    query ($fetchDb: Boolean, $page: Int, $perPage: Int) {
+        guilds(fetchDb: $fetchDb, page: $page, perPage: $perPage)
     }
 `;
 
@@ -13,8 +13,8 @@ export const FetchGuild = gql`
 `;
 
 export const FetchMembers = gql`
-    query ($guildId: String!, $fetchDb: Boolean, $first: Int, $offset: Int) {
-        members(guildId: $guildId, fetchDb: $fetchDb, first: $first, offset: $offset)
+    query ($guildId: String!, $fetchDb: Boolean, $page: Int, $perPage: Int) {
+        members(guildId: $guildId, fetchDb: $fetchDb, page: $page, perPage: $perPage)
     }
 `;
 
