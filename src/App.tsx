@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
+import Grid from "@mui/material/Grid";
+
 import { AuthContext } from "./providers/AuthProvider";
 
 import { FetchClientUser } from "./gql/queries/client";
@@ -44,13 +46,15 @@ const App = () => {
             <Navigation bot={bot} auth={auth} />
             <div className="container">
                 <Sidebar auth={auth} />
-                <Routes>
-                    <Route path="/login" element={<Login />} caseSensitive />
-                    <Route path="/logout" element={<Logout />} caseSensitive />
-                    <Route path="/guild">
-                        <Route path=":guildId" element={<Guild auth={auth} bot={bot} />} caseSensitive />
-                    </Route>
-                </Routes>
+                <Grid>
+                    <Routes>
+                        <Route path="/login" element={<Login />} caseSensitive />
+                        <Route path="/logout" element={<Logout />} caseSensitive />
+                        <Route path="/guild">
+                            <Route path=":guildId" element={<Guild auth={auth} bot={bot} />} caseSensitive />
+                        </Route>
+                    </Routes>
+                </Grid>
             </div>
         </>
     );

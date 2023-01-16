@@ -9,8 +9,11 @@ const GuildInfo = ({ auth, guild }: { auth: any; guild: any }) => {
         <Paper>
             <div className="guild-info">
                 <div className="guild-icon">
-                    <Avatar className={guild.premium ? "premium" : "basic"} sx={{ width: 128, height: "auto" }}
-                            src={guild.iconURL} />
+                    <Avatar
+                        className={guild.premium ? "premium" : "basic"}
+                        sx={{ width: 128, height: "auto" }}
+                        src={guild.iconURL}
+                    />
                 </div>
                 <div className="guild-header">
                     <Typography className="guild-name" variant="h6">{guild.name}</Typography>

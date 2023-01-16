@@ -7,6 +7,8 @@ import { DataGrid, GridColDef, GridRowsProp } from "@mui/x-data-grid";
 import { FetchMembers } from "../../gql/queries/guilds";
 import Avatar from "@mui/material/Avatar";
 
+import { abbrev } from "../../util";
+
 const MemberTable = ({ guild }: { guild: any }) => {
     const { loading, fetchMore, data: { members } = {} } = useQuery(FetchMembers, {
         variables: {
@@ -39,7 +41,8 @@ const MemberTable = ({ guild }: { guild: any }) => {
         username: member.user.tag,
         joinedAt: member.joinedTimestamp ? `${moment(member.joinedTimestamp).format(
             "MMM Do YY h:mm A"
-        )} (${moment(member.joinedTimestamp).fromNow()})` : "Unknown"
+        )} (${moment(member.joinedTimestamp).fromNow()})` : "Unknown",
+        stats: `${member.level} Level - ${abbrev(member.xp)} XP`
     }));
 
     const UsernameCell = ({ row }: any) => {
@@ -47,9 +50,9 @@ const MemberTable = ({ guild }: { guild: any }) => {
         return (
             <div className="avatar-cell">
                 {member.avatarURL ? (
-                    <Avatar src={member.avatarURL} />
+                    <Avatar className={member.premium ? "premium" : "basic"} src={member.avatarURL} />
                 ) : (
-                    <Avatar>{member.user.username[0]}</Avatar>
+                    <Avatar className={member.premium ? "premium" : "basic"}>{member.user.username[0]}</Avatar>
                 )}
                 <span>{member.user.tag}</span>
             </div>
@@ -64,7 +67,8 @@ const MemberTable = ({ guild }: { guild: any }) => {
             sortable: false,
             renderCell: (row) => <UsernameCell row={row} />
         },
-        { field: "joinedAt", headerName: "Joined", width: 250, sortable: false }
+        { field: "joinedAt", headerName: "Joined", width: 250, sortable: false },
+        { field: "stats", headerName: "Stats", width: 150, sortable: false }
     ];
 
     return (
