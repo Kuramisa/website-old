@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useQuery } from "@apollo/client";
@@ -12,17 +11,26 @@ const BotGuildScroll = ({ parent }: { parent: React.MutableRefObject<any> }) => 
 
     const navigate = useNavigate();
 
-    const { data: { guilds } = {}, fetchMore, loading: initialLoading } = useQuery(FetchGuilds);
+    const { data: { guilds } = {}, fetchMore, loading: initialLoading } = useQuery(FetchGuilds, {
+        variables: {
+            perPage: 9
+        }
+    });
 
-    const loadMore = () => {
+    const loadMore = (page: number) => {
         fetchMore({
             variables: {
-                offset: guilds.length
+                page
             },
             updateQuery: (prev, { fetchMoreResult }) => {
                 if (!fetchMoreResult) return prev;
                 return Object.assign({}, prev, {
-                    guilds: [...prev.guilds, ...fetchMoreResult.guilds]
+                    guilds: {
+                        data: [...prev.guilds.data, ...fetchMoreResult.guilds.data],
+                        count: fetchMoreResult.guilds.count,
+                        page: fetchMoreResult.guilds.page,
+                        perPage: fetchMoreResult.guilds.perPage
+                    }
                 });
             }
         });
@@ -32,19 +40,19 @@ const BotGuildScroll = ({ parent }: { parent: React.MutableRefObject<any> }) => 
 
     return <InfiniteScroll
         pageStart={0}
-        loadMore={() => loadMore()}
-        hasMore={true}
+        loadMore={loadMore}
+        hasMore={guilds.data.length < guilds.count}
         className="sidebar"
         useWindow={false}
         getScrollParent={() => parent.current}
     >
-        {guilds.map((guild: any, id: any) => (
+        {guilds.data.map((guild: any, id: any) => (
             <div className="guild" key={id}>
                 <div className="guild-icon">
                     {guild.iconURL ? (
                         <Avatar src={guild.iconURL} />
                     ) : (
-                        <Avatar>{guild.name[0]}</Avatar>
+                        <Avatar sx={{ color: "#fff" }}>{guild.nameAcronym ? guild.nameAcronym : guild.name[0]}</Avatar>
                     )}
 
                 </div>

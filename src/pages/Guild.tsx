@@ -28,11 +28,15 @@ const Guild = ({ auth, bot }: { auth: any, bot: any }) => {
     return (
         <div className="guild-container">
             <GuildInfo auth={auth} guild={guild} />
-            {auth &&
-                guild.members.includes(bot.id) &&
-                guild.members.includes(auth.id) && (
-                    <MemberTable guild={guild} />
-                )}
+            <div className="member-music">
+                {auth &&
+                    guild.members.includes(bot.id) &&
+                    guild.members.includes(auth.id) && (
+                        <>
+                            <MemberTable guild={guild} />
+                        </>
+                    )}
+            </div>
         </div>
     );
 };

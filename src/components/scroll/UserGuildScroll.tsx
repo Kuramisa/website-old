@@ -15,19 +15,25 @@ const UserGuildScroll = ({ parent }: { parent: React.MutableRefObject<any> }) =>
     } = useQuery(FetchUserGuilds,
         {
             variables: {
-                auth: localStorage.getItem("kuramisaToken")
+                auth: localStorage.getItem("kuramisaToken"),
+                perPage: 9
             }
         });
 
-    const loadMore = () => {
+    const loadMore = (page: number) => {
         fetchMore({
             variables: {
-                offset: guilds.length
+                page
             },
             updateQuery: (prev, { fetchMoreResult }) => {
                 if (!fetchMoreResult) return prev;
                 return Object.assign({}, prev, {
-                    guilds: [...prev.userGuilds, ...fetchMoreResult.userGuilds]
+                    userGuilds: {
+                        data: [...prev.userGuilds.data, ...fetchMoreResult.userGuilds.data],
+                        count: fetchMoreResult.userGuilds.count,
+                        page: fetchMoreResult.userGuilds.page,
+                        perPage: fetchMoreResult.userGuilds.perPage
+                    }
                 });
             }
         });
@@ -37,13 +43,13 @@ const UserGuildScroll = ({ parent }: { parent: React.MutableRefObject<any> }) =>
 
     return <InfiniteScroll
         pageStart={0}
-        loadMore={() => loadMore()}
-        hasMore={true}
+        loadMore={loadMore}
+        hasMore={guilds.data.length < guilds.count}
         className="sidebar"
         useWindow={false}
         getScrollParent={() => parent.current}
     >
-        {guilds.map((guild: any, id: any) => (
+        {guilds.data.map((guild: any, id: any) => (
             <div className="guild" key={id}>
                 <div className="guild-icon">
                     {guild.iconURL ? (
