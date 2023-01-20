@@ -1,3 +1,4 @@
+import React from "react";
 import App from "../App";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
@@ -83,18 +84,20 @@ const darkTheme = createTheme({
 });
 
 export default (
-    <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-            <ApolloProvider client={client}>
-                <Router>
-                    <AuthProvider>
-                        <ThemeProvider theme={darkTheme}>
-                            <CssBaseline enableColorScheme={true} />
-                            <App />
-                        </ThemeProvider>
-                    </AuthProvider>
-                </Router>
-            </ApolloProvider>
-        </PersistGate>
-    </Provider>
+    <React.StrictMode>
+        <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+                <ApolloProvider client={client}>
+                    <Router>
+                        <AuthProvider>
+                            <ThemeProvider theme={darkTheme}>
+                                <CssBaseline enableColorScheme={true} />
+                                <App />
+                            </ThemeProvider>
+                        </AuthProvider>
+                    </Router>
+                </ApolloProvider>
+            </PersistGate>
+        </Provider>
+    </React.StrictMode>
 );
