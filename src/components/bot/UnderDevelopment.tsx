@@ -15,6 +15,7 @@ const UnderDevelopment = () => {
             }}>
             <img alt="" src={Logo} style={{ width: "64px", height: "auto" }} />
             <Typography variant="h6">Bot is under development</Typography>
+            <Typography>Please check back later</Typography>
         </Box>
     );
 };
