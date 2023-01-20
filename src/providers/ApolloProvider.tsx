@@ -1,4 +1,3 @@
-import React from "react";
 import App from "../App";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
@@ -11,6 +10,7 @@ import { RetryLink } from "@apollo/client/link/retry";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import { AuthProvider } from "./AuthProvider";
+import { MessageProvider } from "./MessageProvider";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -84,20 +84,20 @@ const darkTheme = createTheme({
 });
 
 export default (
-    <React.StrictMode>
-        <Provider store={store}>
-            <PersistGate loading={null} persistor={persistor}>
-                <ApolloProvider client={client}>
-                    <Router>
+    <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+            <ApolloProvider client={client}>
+                <Router>
+                    <MessageProvider>
                         <AuthProvider>
                             <ThemeProvider theme={darkTheme}>
                                 <CssBaseline enableColorScheme={true} />
                                 <App />
                             </ThemeProvider>
                         </AuthProvider>
-                    </Router>
-                </ApolloProvider>
-            </PersistGate>
-        </Provider>
-    </React.StrictMode>
+                    </MessageProvider>
+                </Router>
+            </ApolloProvider>
+        </PersistGate>
+    </Provider>
 );

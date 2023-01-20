@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 export const LoginUser = gql`
-    mutation login($code: String!) {
+    query login($code: String!) {
         login(code: $code)
     }
 `;
