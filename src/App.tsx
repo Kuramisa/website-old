@@ -26,11 +26,11 @@ import Guild from "./pages/Guild";
 const { REACT_APP_UNDER_DEV } = process.env;
 
 const App = () => {
-    if (REACT_APP_UNDER_DEV === "true") return <UnderDevelopment />;
-
     const { auth } = useContext(AuthContext);
 
     const { loading, error, data: { clientUser: bot } = {} } = useQuery(FetchClientUser, { pollInterval: 100000 });
+
+    if (REACT_APP_UNDER_DEV === "true") return <UnderDevelopment />;
 
     if (loading) return <BotLoading />;
     if (error) return <BotOffline />;
