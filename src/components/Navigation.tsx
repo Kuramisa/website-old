@@ -49,7 +49,7 @@ const Navigation = ({ bot, auth }: { bot: any; auth: any; }) => {
                 {auth ? (
                     <ProfileButton auth={auth} />
                 ) : (
-                    <ButtonGroup variant="contained">
+                    <ButtonGroup variant="outlined">
                         <Button color="warning" onClick={() => window.open(inviteUrl, "_blank")}>Invite</Button>
                         <Button color="success" onClick={() => window.open(authUrl, "_self")}>Login</Button>
                     </ButtonGroup>
