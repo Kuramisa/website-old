@@ -58,7 +58,7 @@ const BotGuildScroll = ({ parent }: { parent: React.MutableRefObject<any> }) => 
                 </div>
                 <div className="guild-info">
                     <h6 className="guild-name" onClick={() => navigate(`/guild/${guild.id}`)}>{guild.name}</h6>
-                    <p className="guild-members">{guild.memberCount}</p>
+                    <p className="guild-members">{guild.memberCount} Members</p>
                 </div>
             </div>
         ))}
