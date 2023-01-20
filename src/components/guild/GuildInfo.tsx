@@ -17,6 +17,7 @@ const GuildInfo = ({ auth, guild }: { auth: any; guild: any }) => {
                 </div>
                 <div className="guild-header">
                     <Typography className="guild-name" variant="h6">{guild.name}</Typography>
+                    <Typography className="guild-members" variant="subtitle2">{guild.memberCount} Members</Typography>
                     {guild.promoted && (
                         <div className="guild-buttons">
                             {guild.members.includes(auth?.id) ? (
