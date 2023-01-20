@@ -11,6 +11,7 @@ import { AuthContext } from "./providers/AuthProvider";
 
 import { FetchClientUser } from "./gql/queries/client";
 
+import UnderDevelopment from "./components/bot/UnderDevelopment";
 import BotLoading from "./components/bot/Loading";
 import BotOffline from "./components/bot/Offline";
 
@@ -22,7 +23,11 @@ import Logout from "./components/Logout";
 
 import Guild from "./pages/Guild";
 
+const { REACT_APP_UNDER_DEV } = process.env;
+
 const App = () => {
+    if (REACT_APP_UNDER_DEV === "true") return <UnderDevelopment />;
+
     const { auth } = useContext(AuthContext);
 
     const { loading, error, data: { clientUser: bot } = {} } = useQuery(FetchClientUser, { pollInterval: 100000 });
