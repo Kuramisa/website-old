@@ -24,11 +24,8 @@ import Logout from "./components/Logout";
 
 import Guild from "./pages/Guild";
 
+import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
-import IconButton from "@mui/material/IconButton";
-import CloseIcon from "@mui/icons-material/Close";
-import { Alert } from "@mui/material";
-
 
 const { REACT_APP_UNDER_DEV } = process.env;
 
@@ -47,28 +44,22 @@ const App = () => {
     if (loading) return <BotLoading />;
     if (botError) return <BotOffline />;
 
-    const sbActions = (
-        <IconButton
-            size="small"
-            aria-label="close"
-            color="inherit"
-            onClick={() => clearMessage()}
-        >
-            <CloseIcon fontSize="small" />
-        </IconButton>
-    );
+    const handleClose = (event: any, reason?: string) => {
+        if (reason === "clickaway") return;
+        clearMessage();
+    };
+
 
     return (
         <>
             <Snackbar
                 open={!!message}
                 autoHideDuration={6000}
-                onClose={() => clearMessage()}
-                action={sbActions}
+                onClose={handleClose}
                 anchorOrigin={{ vertical: "top", horizontal: "center" }}
             >
                 <Alert
-                    onClose={() => clearMessage()}
+                    onClose={handleClose}
                     severity={message?.severity}
                     sx={{ width: "100%" }}
                 >
