@@ -1,3 +1,4 @@
+import "/node_modules/primeflex/primeflex.css";
 import "./assets/less/app.less";
 
 import { useContext } from "react";
