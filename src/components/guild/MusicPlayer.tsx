@@ -1,4 +1,5 @@
 const MusicPlayer = ({ guild }: { guild: any }) => {
+    if (guild) return <></>;
     return (
         <></>
     );
