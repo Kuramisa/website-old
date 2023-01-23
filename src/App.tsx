@@ -48,8 +48,7 @@ const App = () => {
         if (reason === "clickaway") return;
         clearMessage();
     };
-
-
+    
     return (
         <>
             <Snackbar
